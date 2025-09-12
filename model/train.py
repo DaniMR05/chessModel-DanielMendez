@@ -15,9 +15,9 @@ df.columns = df.columns.str.strip()
 # ---------------------------
 # Definir target y features
 # ---------------------------
-y = df.pop('Player Win %')  # Target: porcentaje de victorias
-X = df[['Num Games', 'Perf Rating', 'Avg Player', 'Draw %']]  # Features numéricas
-
+df['Win_Label'] = (df['Player Win %'] > 50).astype(int)
+y = df['Win_Label']  # Target binario
+X = df[['Num Games', 'Perf Rating', 'Avg Player', 'Draw %']]
 # ---------------------------
 # Dividir en entrenamiento y prueba
 # ---------------------------
